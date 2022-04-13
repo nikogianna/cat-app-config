@@ -1,0 +1,31 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: cat-app
+  labels:
+    app.kubernetes.io/part-of: tanzu-cat-app
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/component: run
+    carto.run/workload-name: cat-app
+spec:
+  template:
+    metadata:
+      annotations:
+        conventions.apps.tanzu.vmware.com/applied-conventions: ""
+        developer.conventions/target-containers: workload
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: tanzu-cat-app
+        apps.tanzu.vmware.com/workload-type: web
+        carto.run/workload-name: cat-app
+    spec:
+      containers:
+      - env:
+        - name: JAVA_TOOL_OPTIONS
+        image: devworkspaceacr.azurecr.io/samples/cat-app-flux-system@sha256:9d51141182a72fe9e380e21ceac44307f37b5b8bf051fa78ae6a16cbc6c62a09
+        name: workload
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
