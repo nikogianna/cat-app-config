@@ -22,7 +22,7 @@ spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
-        image: devworkspaceacr.azurecr.io/samples/cat-app-flux-system@sha256:c197d4bee1b9cfbc510292ba057dd458ee69a278b89f327b9e004087836b0fbf
+        image: devworkspaceacr.azurecr.io/samples/cat-app-flux-system@sha256:b8399bed9d00ddeb7a83e147655ac56326dabb1a2c0877e92f764bb478552539
         name: workload
         resources: {}
         securityContext:
